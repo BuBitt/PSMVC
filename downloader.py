@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 import youtube_dl
 from colorama import *
 from menu import *
+import cut
 
 
 def my_hook(d):
@@ -9,11 +10,13 @@ def my_hook(d):
         print('Baixado, convertendo ...')
 
 
-ydl_opts = {
-    'format': 'bestvideo[height<=1080]+bestaudio/best[height<=1080]',
-    'outtmpl': 'temp/1',
-    'progress_hooks': [my_hook],
-}
+def dl_options():
+    ydl_opts = {
+        'format': 'bestvideo[height<=1080]+bestaudio/best[height<=1080]',
+        'outtmpl': 'clips/' + cut.s_name + '/1 raw',
+        'progress_hooks': [my_hook],
+    }
+    return ydl_opts
 
 
 def url():
@@ -29,7 +32,7 @@ def download_video(url):
            ================================
 
 ------------------------------------------------------------""")
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+    with youtube_dl.YoutubeDL(dl_options()) as ydl:
         ydl.download([url])
 
 

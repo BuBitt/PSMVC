@@ -7,13 +7,15 @@ times = []
 
 
 def session_name():
-    global session_name
-    session_name = input('* Dê um nome à sessão: ')
+    global s_name
+    s_name = input('* Dê um nome à sessão: ')
     print("----------------------------------------------------------")
+    return s_name
 
 
 def session(session_name):
-    return os.mkdir("clips/" + session_name)
+    #os.mkdir("temp/" + s_name)
+    os.mkdir("clips/" + s_name)
 
 
 def error_tratament(type_variable, list, stage):
@@ -58,29 +60,35 @@ def times_input():
 def clip_cut(times):
     """Corta o vídeo em determinado período"""
 
-    print(Fore.GREEN + """----------------------------------------------------------
+    t_times = []
+    if times == t_times:
+        print(Fore.GREEN + """----------------------------------------------------------
+* Não há cortes
+----------------------------------------------------------""")
+
+    else:
+        print(Fore.GREEN + """----------------------------------------------------------
 
            ==============================
             INICIANDO PROCESSO DE CORTES
            ==============================
 
 ----------------------------------------------------------""")
-    #importing session
-
-    session(session_name)
+    # Importing session
+    # session(s_name)
 
     # Clipping raw video
     for index in range(0, len(times) - 1, 2):
-        if path.isfile('temp/1.mp4'):
-            clip = VideoFileClip("temp/1.mp4")
+        if path.isfile('clips/'+ s_name +'1 raw.mp4'):
+            clip = VideoFileClip("clips/"+ s_name +"/1 raw.mp4")
         else:
-            clip = VideoFileClip("temp/1.mkv")
+            clip = VideoFileClip("clips/"+ s_name +"/1 raw.mkv")
 
         start = int(times[index])
         end = int(times[index + 1])
 
         clip = clip.subclip(start, end)
-        clip.write_videofile("clips/" + session_name + "/clip_" + str(index + 2) + ".mp4")
+        clip.write_videofile("clips/" + s_name + "/clip_" + str(index + 2) + ".mp4")
 
 def final():
     print(Fore.YELLOW + """----------------------------------------------------------
@@ -91,4 +99,4 @@ def final():
 
 ----------------------------------------------------------""")
 
-    print(f'* Finalizado. Vá até a pasta {session} em /clips para acessar os cortes.')
+    print(f'* Finalizado. Vá até a pasta ' + Fore.BLUE + f'/{s_name}' + Fore.YELLOW + ' em '+ Fore.BLUE +'/clips' + Fore.YELLOW + ' para acessar os cortes.')
