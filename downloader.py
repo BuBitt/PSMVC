@@ -13,7 +13,7 @@ def my_hook(d):
 def dl_options():
     ydl_opts = {
         'format': 'bestvideo[height<=1080]+bestaudio/best[height<=1080]',
-        'outtmpl': 'clips/' + cut.s_name + '/1 raw',
+        'outtmpl': 'clips/' + cut.s_name + '/original/raw',
         'progress_hooks': [my_hook],
     }
     return ydl_opts

@@ -61,6 +61,7 @@ def clip_cut(times):
     """Corta o vídeo em determinado período"""
 
     t_times = []
+
     if times == t_times:
         print(Fore.GREEN + """----------------------------------------------------------
 * Não há cortes
@@ -79,7 +80,7 @@ def clip_cut(times):
 
     # Clipping raw video
     for index in range(0, len(times) - 1, 2):
-        if path.isfile('clips/'+ s_name +'1 raw.mp4'):
+        if path.isfile('clips/'+ s_name +'/original/raw.mp4'):
             clip = VideoFileClip("clips/"+ s_name +"/1 raw.mp4")
         else:
             clip = VideoFileClip("clips/"+ s_name +"/1 raw.mkv")
