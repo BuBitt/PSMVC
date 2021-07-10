@@ -1,0 +1,17 @@
+#+TITLE: Python Simple Mass Video Clipper (PSMVC)
+#+AUTHOR: Bruno Bitu
+#+DESCRIPTION: About Program
+
+
+PSMVC é um gerador de cortes via CLI feito em python.
+
+[[./images/thumb.png]]
+
+*** Dependencias:
++ Python 3.x
+
+*** Modo de uso:
+Basta abrir o arquivo start.py
+
+*** Output:
+No próprio diretório na pasta /clips/nome_da_sessao
