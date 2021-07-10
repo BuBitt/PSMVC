@@ -3,6 +3,7 @@ import youtube_dl
 from colorama import *
 from menu import *
 import cut
+import msgs
 
 
 def my_hook(d):
@@ -24,14 +25,8 @@ def url():
     f_url = input(Fore.BLUE + '* Cole o link do vídeo: ')
 
 def download_video(url):
-    print(Fore.BLUE + """
-----------------------------------------------------------
+    msgs.downloader()  # Downloader menssage
 
-           ================================
-            INICIANDO PROCESSO DE DOWNLOAD
-           ================================
-
-------------------------------------------------------------""")
     with youtube_dl.YoutubeDL(dl_options()) as ydl:
         ydl.download([url])
 

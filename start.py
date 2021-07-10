@@ -1,23 +1,18 @@
+from prereq import *
 from downloader import *
 from settings import *
-from prereq import *
 from cut import *
-import fileinput
-import sys
-
-
-if p_req_inst:
-    pre_req()
-    for i, line in enumerate(fileinput.input('settings.py', inplace=1)):
-        sys.stdout.write(line.replace('True', 'False'))
+import settings
+import msgs
 
 
 def start():
     session_name()                  # Cria o nome de seção
+    msgs.select_cuts()              # Cabeçalho da seleção de cortes
     times_input()                   # Define os tempos de corte
     download_video(f_url)           # Baixa vídeo
     clip_cut(times)                 # Corta vídeo
-    final()                         # Mensagem de CONCLUÍDO
+    msgs.final()                    # Mensagem de CONCLUÍDO
 
 
 start()

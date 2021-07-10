@@ -1,4 +1,8 @@
 import os
+import settings
+import fileinput
+import sys
+import msgs
 
 
 def install(package_name):
@@ -6,27 +10,51 @@ def install(package_name):
 
 
 def pre_req():
-    """Instal dependências"""
+    """Instala dependências"""
+
+    # wheel
+    try:
+        import wheel
+        print("* Módulo wheel está instalado.")
+    except ModuleNotFoundError:
+        print("\n* Instalando wheel...")
+        install("wheel")
+
     # youtube-dl
     try:
         import youtube_dl
-        print("Módulo youtube-dl está na máquina.")
+        print("* Módulo youtube-dl está instalado.")
     except ModuleNotFoundError:
-        print("Instalando youtube-dl...")
+        print("\n* Instalando youtube-dl...")
         install("youtube_dl")
 
     # moviepy
     try:
         import moviepy
-        print("Módulo moviepy já está Instalado.")
+        print("* Módulo moviepy já está instalado.")
     except ModuleNotFoundError:
-        print("Instalando moviepy...")
+        print("\n* Instalando moviepy...")
         install("moviepy")
 
     # colorama
     try:
         import colorama
-        print("Módulo colorama já está instalado.")
+        print("* Módulo colorama já está instalado.")
     except ModuleNotFoundError:
-        print("Instalando colorama...")
+        print("\n* Instalando colorama...")
         install("colorama")
+        print()
+
+
+def install_prereq():
+        msgs.dependences()
+
+        pre_req()
+        for i, line in enumerate(fileinput.input('settings.py', inplace=1)):
+            sys.stdout.write(line.replace('True', 'False'))
+
+        msgs.line()
+
+
+if settings.p_req_inst:
+    install_prereq()

@@ -1,6 +1,7 @@
 from moviepy.editor import *
 from colorama import Fore
 from os import *
+import msgs
 
 
 times = []
@@ -9,13 +10,8 @@ times = []
 def session_name():
     global s_name
     s_name = input('* Dê um nome à sessão: ')
-    print("----------------------------------------------------------")
+
     return s_name
-
-
-def session(session_name):
-    #os.mkdir("temp/" + s_name)
-    os.mkdir("clips/" + s_name)
 
 
 def error_tratament(type_variable, list, stage):
@@ -40,7 +36,7 @@ def times_input():
 
     while 1:
         clip_number += 1
-        print('\n' + Fore.GREEN + f'        ========== Corte Nº {clip_number} =========')
+        print('\n' + Fore.GREEN + f'         ------------- Corte Nº {clip_number} -------------')
         time_init = input("* Início do corte (segundos): ")
 
         if time_init == '':
@@ -63,41 +59,20 @@ def clip_cut(times):
     t_times = []
 
     if times == t_times:
-        print(Fore.GREEN + """----------------------------------------------------------
-* Não há cortes
-----------------------------------------------------------""")
+        msgs.no_cuts()       # Import no cuts message
 
     else:
-        print(Fore.GREEN + """----------------------------------------------------------
-
-           ==============================
-            INICIANDO PROCESSO DE CORTES
-           ==============================
-
-----------------------------------------------------------""")
-    # Importing session
-    # session(s_name)
+        msgs.cut_process()    # Imoprt cuts message
 
     # Clipping raw video
     for index in range(0, len(times) - 1, 2):
         if path.isfile('clips/'+ s_name +'/original/raw.mp4'):
-            clip = VideoFileClip("clips/"+ s_name +"/1 raw.mp4")
+            clip = VideoFileClip("clips/"+ s_name +"/original/raw.mp4")
         else:
-            clip = VideoFileClip("clips/"+ s_name +"/1 raw.mkv")
+            clip = VideoFileClip("clips/"+ s_name +"/original/raw.mkv")
 
         start = int(times[index])
         end = int(times[index + 1])
 
         clip = clip.subclip(start, end)
         clip.write_videofile("clips/" + s_name + "/clip_" + str(index + 2) + ".mp4")
-
-def final():
-    print(Fore.YELLOW + """----------------------------------------------------------
-
-           ==============================
-             !!!CONCLUÍDO COM SUCESSO!!!
-           ==============================
-
-----------------------------------------------------------""")
-
-    print(f'* Finalizado. Vá até a pasta ' + Fore.BLUE + f'/{s_name}' + Fore.YELLOW + ' em '+ Fore.BLUE +'/clips' + Fore.YELLOW + ' para acessar os cortes.')
