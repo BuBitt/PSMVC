@@ -14,7 +14,7 @@ def session_name():
     return s_name
 
 
-def error_tratament(type_variable, list, stage):
+def error_treatment(type_variable, list, stage):
     """Trata os erros de digitação dos tempos"""
 
     if not type_variable.isdigit():
@@ -42,13 +42,12 @@ def times_input():
         if time_init == '':
             break
 
-        # "Início" ERROR TRATEMENT
-        error_tratament(time_init, times, 'início')
-
+        # "Início" ERROR TREATMENT
+        error_treatment(time_init, times, 'início')
 
         time_end = input(Fore.GREEN + "* Final do corte  (segundos): ")
-        # "Final" ERROR TRATAMENT
-        error_tratament(time_end, times, 'final')
+        # "Final" ERROR TREATMENT
+        error_treatment(time_end, times, 'final')
 
     return times
 
@@ -59,17 +58,17 @@ def clip_cut(times):
     t_times = []
 
     if times == t_times:
-        msgs.no_cuts()       # Import no cuts message
+        msgs.no_cuts()  # Import no cuts message
 
     else:
-        msgs.cut_process()    # Imoprt cuts message
+        msgs.cut_process()  # Imoprt cuts message
 
     # Clipping raw video
     for index in range(0, len(times) - 1, 2):
-        if path.isfile('clips/'+ s_name +'/original/raw.mp4'):
-            clip = VideoFileClip("clips/"+ s_name +"/original/raw.mp4")
+        if path.isfile('clips/' + s_name + '/original/raw.mp4'):
+            clip = VideoFileClip("clips/" + s_name + "/original/raw.mp4")
         else:
-            clip = VideoFileClip("clips/"+ s_name +"/original/raw.mkv")
+            clip = VideoFileClip("clips/" + s_name + "/original/raw.mkv")
 
         start = int(times[index])
         end = int(times[index + 1])

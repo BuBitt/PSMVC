@@ -1,3 +1,5 @@
 youtube_downloader.py
 __pycache__
 .mypy_cache
+.idea
+.vscode
