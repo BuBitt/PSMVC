@@ -3,6 +3,7 @@ import youtube_dl
 from menu import *
 import cut
 import msgs
+import os
 
 
 def my_hook(d):
@@ -13,7 +14,7 @@ def my_hook(d):
 def dl_options():
     ydl_opts = {
         'format': 'bestvideo[height<=1080]+bestaudio/best[height<=1080]',
-        'outtmpl': 'clips/' + cut.s_name + '/original/raw',
+        'outtmpl': os.path.join('clips', cut.s_name, 'original', 'raw'),
         'progress_hooks': [my_hook],
     }
     return ydl_opts

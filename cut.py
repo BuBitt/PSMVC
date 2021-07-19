@@ -1,4 +1,6 @@
-from moviepy.editor import *
+from moviepy.editor import (
+    VideoFileClip
+)
 from colorama import Fore
 from os import *
 import msgs
@@ -54,7 +56,8 @@ def times_input():
 
 def clip_cut(times):
     """Corta o vídeo em determinado período"""
-
+    
+    cl = 0
     t_times = []
 
     if times == t_times:
@@ -63,15 +66,16 @@ def clip_cut(times):
     else:
         msgs.cut_process()  # Imoprt cuts message
 
+
     # Clipping raw video
     for index in range(0, len(times) - 1, 2):
-        if path.isfile('clips/' + s_name + '/original/raw.mp4'):
-            clip = VideoFileClip("clips/" + s_name + "/original/raw.mp4")
+        if path.isfile(path.join('clips', s_name, 'original', 'raw.mp4')):
+            clip = VideoFileClip(path.join('clips', s_name, 'original', 'raw.mp4'))
         else:
-            clip = VideoFileClip("clips/" + s_name + "/original/raw.mkv")
+            clip = VideoFileClip(path.join('clips', s_name, 'original', 'raw.mkv'))
 
         start = int(times[index])
         end = int(times[index + 1])
 
         clip = clip.subclip(start, end)
-        clip.write_videofile("clips/" + s_name + "/clip_" + str(index + 2) + ".mp4")
+        clip.write_videofile(path.join('clips', s_name, "clip_" + str(cl + 1) + ".mp4"))
