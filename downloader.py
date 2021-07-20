@@ -22,7 +22,7 @@ def dl_options():
 
 def url():
     global f_url
-    f_url = input(Fore.BLUE + '* Cole o link do vídeo: ')
+    f_url = input(Fore.BLUE + '* Cole o link do vídeo: ').replace(' ', '')
 
 
 def download_video(url):

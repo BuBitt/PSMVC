@@ -2,7 +2,7 @@ from moviepy.editor import (
     VideoFileClip
 )
 from colorama import Fore
-from os import *
+from os import path
 import msgs
 
 
@@ -21,41 +21,45 @@ def times_input():
 
     clip_number = 0
     error = False
-    erro_msg = ''
+
 
     while 1:
         try:
             clip_number += 1
+            
             if error:
                 print('\n' + Fore.RED + erro_msg)
                 print(f'         ------------- Corte Nº {clip_number} -------------')
+            
             else:
                 print('\n' + Fore.GREEN)
                 print(f'         ------------- Corte Nº {clip_number} -------------')
-            time_init = int(input("* Início do corte (segundos): "))
             
+            time_init = input("* Início do corte (segundos): ")
+
             if time_init == '':
                 break
 
-            time_end = int(input("* Final do corte  (segundos): "))
-            
+            if not time_init.isdigit():
+                raise ValueError('\n!!! Erro: Digite um número válido (inteiro).')
+
+            time_end = input("* Final do corte  (segundos): ")
+            if not time_end.isdigit():
+                raise ValueError('\n!!! Erro: Digite um número válido (inteiro).')
+
             error = False
+            
             if time_init > time_end or time_init == time_end:
-                raise ValueError('\n!!! Erro: Valor maior ou igual o inicial.')
+                raise ValueError('\n!!! Erro: Valor final maior ou igual o inicial.')
 
         except ValueError as err:
             if clip_number < 0:
                 clip_number = 1
             else:
                 clip_number -= 1
-            
+
+            erro_msg = str(err)            
             error = True
-            
-            if str(err) == "invalid literal for int() with base 10: 'p'":
-                erro_msg = '\n!!! Erro: Digite um número válido (inteiro).'
-            else:
-                erro_msg = str(err)
-            
             pass
         
         except KeyboardInterrupt:
