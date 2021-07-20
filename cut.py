@@ -16,41 +16,56 @@ def session_name():
     return s_name
 
 
-def error_treatment(type_variable, list, stage):
-    """Trata os erros de digitação dos tempos"""
-
-    if not type_variable.isdigit():
-        while 1:
-            print('\n' + Fore.RED + f'  !!!! O valor {stage} digitado não é válido !!!!')
-            type_variable = input(f"* Digite o tempo de {stage} do corte novamente (segundos): ")
-
-            if type_variable.isdigit():
-                list.append(int(type_variable))
-                break
-    else:
-        list.append(type_variable)
-
-
 def times_input():
     """Coleta e salva os tempos para os cortes"""
 
     clip_number = 0
+    error = False
+    erro_msg = ''
 
     while 1:
-        clip_number += 1
-        print('\n' + Fore.GREEN + f'         ------------- Corte Nº {clip_number} -------------')
-        time_init = input("* Início do corte (segundos): ")
+        try:
+            clip_number += 1
+            if error:
+                print('\n' + Fore.RED + erro_msg)
+                print(f'         ------------- Corte Nº {clip_number} -------------')
+            else:
+                print('\n' + Fore.GREEN)
+                print(f'         ------------- Corte Nº {clip_number} -------------')
+            time_init = int(input("* Início do corte (segundos): "))
+            
+            if time_init == '':
+                break
 
-        if time_init == '':
-            break
+            time_end = int(input("* Final do corte  (segundos): "))
+            
+            error = False
+            if time_init > time_end or time_init == time_end:
+                raise ValueError('\n!!! Erro: Valor maior ou igual o inicial.')
 
-        # "Início" ERROR TREATMENT
-        error_treatment(time_init, times, 'início')
-
-        time_end = input(Fore.GREEN + "* Final do corte  (segundos): ")
-        # "Final" ERROR TREATMENT
-        error_treatment(time_end, times, 'final')
-
+        except ValueError as err:
+            if clip_number < 0:
+                clip_number = 1
+            else:
+                clip_number -= 1
+            
+            error = True
+            
+            if str(err) == "invalid literal for int() with base 10: 'p'":
+                erro_msg = '\n!!! Erro: Digite um número válido (inteiro).'
+            else:
+                erro_msg = str(err)
+            
+            pass
+        
+        except KeyboardInterrupt:
+            print('\nBye Bye')
+            quit()
+        
+        else:
+            times.append(int(time_init))
+            times.append(int(time_end))
+        
     return times
 
 
