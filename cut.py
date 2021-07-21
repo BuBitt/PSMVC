@@ -2,7 +2,7 @@ from moviepy.editor import (
     VideoFileClip
 )
 from colorama import Fore
-from os import path
+from os import getcwd, path
 import msgs
 
 
@@ -88,10 +88,10 @@ def clip_cut(times):
 
     # Clipping raw video
     for index in range(0, len(times) - 1, 2):
-        if path.isfile(path.join('clips', s_name, 'original', 'raw.mp4')):
-            clip = VideoFileClip(path.join('clips', s_name, 'original', 'raw.mp4'))
+        if path.isfile(path.join(getcwd(), 'clips', s_name, 'original', 'raw.mp4')):
+            clip = VideoFileClip(path.join(getcwd(), 'clips', s_name, 'original', 'raw.mp4'))
         else:
-            clip = VideoFileClip(path.join('clips', s_name, 'original', 'raw.mkv'))
+            clip = VideoFileClip(path.join(getcwd(), 'clips', s_name, 'original', 'raw.mkv'))
 
         start = int(times[index])
         end = int(times[index + 1])
