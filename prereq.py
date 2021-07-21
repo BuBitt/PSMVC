@@ -50,7 +50,7 @@ def install_prereq():
         msgs.dependences()
 
         pre_req()
-        for i, line in enumerate(fileinput.input('settings.py', inplace=1)):
+        for i, line in enumerate(fileinput.input(os.path.join('settings.py'), inplace=1)):
             sys.stdout.write(line.replace('True', 'False'))
 
         msgs.line()
