@@ -2,7 +2,7 @@ import os
 import settings
 import fileinput
 import sys
-import msgs
+
 
 
 def install(package_name):
@@ -47,13 +47,11 @@ def pre_req():
 
 
 def install_prereq():
-        msgs.dependences()
 
         pre_req()
         for i, line in enumerate(fileinput.input(os.path.join('settings.py'), inplace=1)):
             sys.stdout.write(line.replace('True', 'False'))
 
-        msgs.line()
 
 
 if settings.p_req_inst:
