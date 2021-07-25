@@ -12,13 +12,13 @@ def install(package_name):
 def pre_req():
     """Instala dependências"""
 
-    # wheel
+    # pytube
     try:
-        import wheel
-        print("* Módulo wheel está instalado.")
+        import pytube
+        print("* Módulo pytube está instalado.")
     except ModuleNotFoundError:
-        print("\n* Instalando wheel...")
-        install("wheel")
+        print("\n* Instalando pytube...")
+        install("pytube")
 
     # youtube-dl
     try:
