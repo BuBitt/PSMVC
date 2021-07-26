@@ -1,6 +1,4 @@
-from moviepy.editor import (
-    VideoFileClip
-)
+from moviepy.editor import VideoFileClip
 from colorama import Fore
 from os import getcwd, path
 import msgs
