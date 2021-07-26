@@ -1,7 +1,7 @@
 # Python Simple Mass Video Clipper (PSMVC)
 PSMVC é um gerador de cortes via CLI feito em python.
 
-![image](https://imgur.com/fc4328e1-6b14-4187-a658-2be68f3d2a18)
+![image](https://i.imgur.com/5ffhE9r.png)
 
 ### Dependencias:
 `Python 3.x`
