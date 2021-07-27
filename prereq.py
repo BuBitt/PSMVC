@@ -31,14 +31,14 @@ def pre_req():
     # youtube-dl
     try:
         import youtube_dl
-        
-        if sys.platform.startswith('win32'):
-            os.system("SET PATH=%PATH%;C:\\ffmpeg\\bin")
 
         print("* Módulo youtube-dl está instalado.")
     except ModuleNotFoundError:
         print("\n* Instalando youtube-dl...")
         install("youtube_dl")
+
+        if sys.platform.startswith('win32'):
+            os.system("C:\\Windows\\System32\\cmd.exe /c z:\\Scripts\\win.bat")
 
     # moviepy
     try:
