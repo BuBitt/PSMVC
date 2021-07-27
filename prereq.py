@@ -1,7 +1,8 @@
-import os
-import settings
+from subprocess import Popen
 import fileinput
+import settings
 import sys
+import os
 
 
 
@@ -11,51 +12,25 @@ def install(package_name):
 
 def pre_req():
     """Instala dependências"""
+    print("""
+------------------------------------------------------------
 
-    # pytube
-    try:
-        import pytube
-        print("* Módulo pytube está instalado.")
-    except ModuleNotFoundError:
-        print("\n* Instalando pytube...")
-        install("pytube")
+             ================================
+              ANÁLISE DE DEPENDÊNCIAS PSMVC
+             ================================
 
-    # wheel
-    try:
-        import wheel
-        print("* Módulo wheel está instalado.")
-    except ModuleNotFoundError:
-        print("\n* Instalando wheel...")
-        install("wheel")
+------------------------------------------------------------""")
+    os. system("pip install -r requirements.txt")
+    
+    print('\n------------------------------------------------------------')
+    print('* Adicionando ffmpeg ao path do windows.')
+    
+    if sys.platform.startswith('win32'):
+        p = Popen("win.bat", cwd=r"\\Scripts")
+        stdout, stderr = p.communicate()
+    
+    print("------------------------------------------------------------")
 
-    # youtube-dl
-    try:
-        import youtube_dl
-
-        print("* Módulo youtube-dl está instalado.")
-    except ModuleNotFoundError:
-        print("\n* Instalando youtube-dl...")
-        install("youtube_dl")
-
-        if sys.platform.startswith('win32'):
-            os.system("C:\\Windows\\System32\\cmd.exe /c z:\\Scripts\\win.bat")
-
-    # moviepy
-    try:
-        import moviepy
-        print("* Módulo moviepy já está instalado.")
-    except ModuleNotFoundError:
-        print("\n* Instalando moviepy...")
-        install("moviepy")
-
-    # colorama
-    try:
-        import colorama
-        print("* Módulo colorama já está instalado.")
-    except ModuleNotFoundError:
-        print("\n* Instalando colorama...")
-        install("colorama")
-        print()
 
 
 def install_prereq():

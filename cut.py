@@ -97,3 +97,4 @@ def clip_cut(times):
 
         clip = clip.subclip(start, end)
         clip.write_videofile(path.join('clips', s_name, "clip_" + str(cl + 1) + ".mp4"))
+
