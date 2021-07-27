@@ -20,9 +20,21 @@ def pre_req():
         print("\n* Instalando pytube...")
         install("pytube")
 
+    # wheel
+    try:
+        import wheel
+        print("* Módulo wheel está instalado.")
+    except ModuleNotFoundError:
+        print("\n* Instalando wheel...")
+        install("wheel")
+
     # youtube-dl
     try:
         import youtube_dl
+        
+        if sys.platform.startswith('win32'):
+            os.system("SET PATH=%PATH%;c:\whatever\else")
+
         print("* Módulo youtube-dl está instalado.")
     except ModuleNotFoundError:
         print("\n* Instalando youtube-dl...")
