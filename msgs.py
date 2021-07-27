@@ -61,3 +61,8 @@ def select_cuts():
                    SELEÇAO DE CORTES
              ==============================
 """)
+
+
+def menu_options():
+    
+    pass

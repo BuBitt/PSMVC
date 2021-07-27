@@ -21,8 +21,9 @@ def dl_options():
 
 
 def url():
-    global f_url
-    f_url = input(Fore.BLUE + '* Cole o link do vídeo: ')
+
+        global f_url
+        f_url = input(Fore.BLUE + '* Cole o link do vídeo: ')
 
 
 def download_video(url):
@@ -30,7 +31,7 @@ def download_video(url):
     msgs.downloader()  # Downloader message
 
     with youtube_dl.YoutubeDL(dl_options()) as ydl:
-        ydl.download([url])
+        ydl.download([f_url])
 
 
 menu_top()

@@ -22,14 +22,14 @@ def pre_req():
 ------------------------------------------------------------""")
     os. system("pip install -r requirements.txt")
     
-    print('\n------------------------------------------------------------')
-    print('* Adicionando ffmpeg ao path do windows.')
-    
     if sys.platform.startswith('win32'):
+        print('\n------------------------------------------------------------')
+        print('* Adicionando ffmpeg ao path do windows.')
+        
         p = Popen("win.bat", cwd=r"\\Scripts")
         stdout, stderr = p.communicate()
     
-    print("------------------------------------------------------------")
+        print("------------------------------------------------------------")
 
 
 
