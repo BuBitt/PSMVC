@@ -9,13 +9,13 @@ Basta abrir o arquivo `start.py`
 ## Dependencias:
 ##### Windows:
 ```
-Python 3.6.x`
+Python 3.6.x+`
 FFmpeg
 Git
 ```
 ##### Linux e MAC:
 ```
-Python 3.6.x`
+Python 3.6.x+`
 Git
 ```
 
