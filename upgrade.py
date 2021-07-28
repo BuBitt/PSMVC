@@ -14,12 +14,12 @@ def check_git():
     try:
         print("-" * 60)
         git = os.system('git --version')
-        print('* Buscando Atualizações *')
+        print('* Buscando Atualizações')
         return True
 
     except:
         print("-" * 60)
-        print('Git não instalado, atualizações automáticas não suportadas.')
+        print('* Git não instalado, atualizações automáticas não suportadas.')
         print("-" * 60)
         return False
 
@@ -55,7 +55,7 @@ def upgrade():
         print("-" * 60)
 
     else:
-        print(f'* O programa já está no commit: {github_repo[:8]} (Atualizando).')
+        print(f'* O programa já está no commit: {github_repo[:8]} (Atualizado).')
         print("-" * 60)
 
 

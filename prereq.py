@@ -1,14 +1,8 @@
 from subprocess import Popen
-from msgs import 
 import fileinput
 import settings
 import sys
 import os
-
-
-
-def install(package_name):
-    os.system("pip install " + package_name)
 
 
 def pre_req():
@@ -21,18 +15,15 @@ def pre_req():
              ================================
 
 ------------------------------------------------------------""")
-    os.system("pip install -r requirements.txt")
-    print("------------------------------------------------------------")
-
 
 
 def install_prereq():
+    pre_req()
+    with open('settings.py', 'w') as stt:
+        stt.write('p_req_inst = False')
 
-        pre_req()
-        with open('settings.py', 'w') as stt:
-            stt.write('p_req_inst = False')
-
-
+    os.system("pip install -r requirements.txt")
+    print("-" * 60)
 
 
 if settings.p_req_inst:

@@ -1,23 +1,31 @@
-# Python Simple Mass Video Clipper (PSMVC)
+Python Simple Mass Video Clipper (PSMVC)
+========================================
+
 PSMVC é um gerador de cortes via terminal construído em python.
 
 ![image](https://i.imgur.com/5ffhE9r.png)
 
-## Uso:
+Uso
+---
+
 Basta abrir o arquivo `start.py`
 
-## Dependencias:
-##### Windows:
+## Dependencias
+
+##### Windows
+
 ```
-Python 3.6.x+`
+Python 3.6.x+
 FFmpeg
 Git
 ```
-##### Linux e MAC:
+
+##### Linux e MAC
+
 ```
-Python 3.6.x+`
+Python 3.6.x+
 Git
 ```
 
-### Onde meus clips estão?:
+### Onde meus clips estão?
 No próprio diretório na pasta `/clips/__nome_da_sessao__`

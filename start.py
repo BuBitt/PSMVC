@@ -1,8 +1,7 @@
 from upgrade import *
+from prereq import *
 from downloader import *
-from settings import *
 from cut import *
-import settings
 import msgs
 
 
