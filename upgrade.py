@@ -15,6 +15,7 @@ def check_git():
         print("-" * 60)
         git = os.system('git --version')
         print('* Buscando Atualizações')
+        print()
         return True
 
     except:
@@ -51,7 +52,7 @@ def upgrade():
         print('--- INICIANDO ATUALIZAÇÃO ---')
         os.system('git clone https://github.com/BuBitt/PSMVC.git ' + upgrade_path)
         update_files()
-        print("* Atualizado com sucesso!")
+        print("\n* Atualizado com sucesso!")
         print("-" * 60)
 
     else:
