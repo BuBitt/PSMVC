@@ -1,4 +1,4 @@
-from prereq import *
+from upgrade import *
 from downloader import *
 from settings import *
 from cut import *
