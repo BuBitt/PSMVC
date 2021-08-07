@@ -1,4 +1,4 @@
-#from prereq import *
+# from prereq import *
 from shutil import move, copy, rmtree
 import requests
 import json
@@ -35,7 +35,7 @@ def update_files():
                 move(os.path.join(upgrade_path, stuff.name), home)
                 continue
 
-            if stuff.name != 'clips': 
+            if stuff.name != 'clips':
                 copy(stuff.path, home)
 
         rmtree(upgrade_path)

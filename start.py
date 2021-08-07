@@ -1,5 +1,5 @@
-from upgrade import *
 from prereq import *
+from upgrade import *
 from downloader import *
 from cut import *
 import msgs
